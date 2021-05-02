@@ -2,7 +2,13 @@ import { Avatar } from "@material-ui/core";
 import React from "react";
 import "./Story.css";
 
-function Story({ image, profileSrc, title }) {
+interface Props {
+	image: string;
+	profileSrc: string;
+	title: string;
+}
+
+function Story({ image, profileSrc, title }: Props) {
 	return (
 		<div style={{ backgroundImage: `url(${image})` }} className="story">
 			<Avatar className="story__avatar" src={profileSrc} />
