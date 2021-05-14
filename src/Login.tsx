@@ -39,7 +39,7 @@ function Login() {
 
 	const signUp = useCallback(async () => {
 		post({
-			url: "http://localhost:3000/users/signup",
+			url: "/users/signup",
 			body: {
 				user_id: id,
 				password: pw,
@@ -56,7 +56,7 @@ function Login() {
 
 	const signIn = useCallback(async () => {
 		post({
-			url: "http://localhost:3000/users/signin",
+			url: "/users/signin",
 			body: {
 				user_id: id,
 				password: pw,

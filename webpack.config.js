@@ -39,6 +39,12 @@ module.exports = {
 		contentBase: path.join(__dirname, "./dist"),
 		port: 8080,
 		historyApiFallback: true,
+		proxy: {
+			"/users": {
+				target: "http://localhost:3000",
+				changeOrigin: true,
+			},
+		},
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
