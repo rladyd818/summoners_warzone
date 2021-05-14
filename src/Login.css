@@ -16,12 +16,71 @@
 	color: #2e81f4;
 }
 
-.login > div > img {
+/* .login > div > img {
 	object-fit: contain;
 	height: 150px;
+} */
+.login > div > .login__main {
+	/* object-fit: contain; */
+	height: 500px;
+	width: 80%;
+	margin: 0 auto;
 }
 
-.login > div {
+.login__logo > h1 {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.login > .login__logo {
 	display: flex;
 	flex-direction: column;
+}
+
+.signup__form {
+	display: flex;
+	flex-direction: column;
+}
+
+.signin__form {
+	display: flex;
+	flex-direction: column;
+}
+
+#signin {
+	margin-left: 10px;
+	color: rgb(55, 55, 174);
+}
+
+#signin:hover {
+	cursor: pointer;
+	color: blue;
+}
+
+.signup__form > button {
+	align-self: flex-end;
+	width: 10vw;
+	margin-top: 20px;
+	background-color: #2e81f4;
+	color: #eff2f5;
+	font-weight: 800;
+}
+
+.signup__form > button:hover {
+	background-color: white;
+	color: #2e81f4;
+}
+
+.signin__form > button {
+	align-self: flex-end;
+	width: 10vw;
+	margin-top: 20px;
+	background-color: #2e81f4;
+	color: #eff2f5;
+	font-weight: 800;
+}
+
+.signin__form > button:hover {
+	background-color: white;
+	color: #2e81f4;
 }
