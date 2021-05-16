@@ -16,16 +16,16 @@
 	color: #2e81f4;
 }
 
-/* .login > div > img {
+.login > div > img {
 	object-fit: contain;
-	height: 150px;
-} */
-.login > div > .login__main {
+	height: 60vh;
+	width: 100vw;
+}
+/* .login > div > .login__main {
 	object-fit: contain;
 	height: 500px;
-	/* width: 80%; */
 	margin: 0 auto;
-}
+} */
 
 .login__logo > h1 {
 	text-align: center;
