@@ -109,7 +109,7 @@ function Login() {
 		<>
 			<div className="login">
 				<div className="login__logo">
-					<img className="login__main" src="./images/main.svg" alt="" />
+					<img src="./images/main.svg" alt="" />
 					<h1>Welcome to Summoners warzone</h1>
 					{/* <h1>{count}</h1>
 					<button onClick={() => dispatch(incrementAction(5))}>countup</button>
