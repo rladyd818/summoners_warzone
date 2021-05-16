@@ -109,13 +109,13 @@ function Login() {
 		<>
 			<div className="login">
 				<div className="login__logo">
-					<img className="login__main" src="./images/main.png" alt="" />
+					<img className="login__main" src="./images/main.svg" alt="" />
 					<h1>Welcome to Summoners warzone</h1>
-					<h1>{count}</h1>
+					{/* <h1>{count}</h1>
 					<button onClick={() => dispatch(incrementAction(5))}>countup</button>
 					<button onClick={() => dispatch(decrementAction(5))}>
 						countdown
-					</button>
+					</button> */}
 				</div>
 				<div>
 					<h4>
