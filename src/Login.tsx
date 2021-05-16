@@ -11,6 +11,9 @@ import { useHistory, Redirect } from "react-router-dom";
 import { useStore, useDispatch, useSelector } from "react-redux";
 import { countSelector, incrementAction, decrementAction } from "./store";
 
+const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+const pwRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+
 function Login() {
 	// const [state, dispatch] = useStateValue();
 	const [modalOpen, setModalOpen] = useState(false);
@@ -18,6 +21,11 @@ function Login() {
 	const [id, setId] = useState("");
 	const [pw, setPw] = useState("");
 	const [nick, setNick] = useState("");
+	const [btnDisabled, setBtnDisabled] = useState(true);
+	const [idState, setIdState] = useState(false);
+	const [pwState, setPwState] = useState(false);
+	const [idHelperTxt, setIdHelperTxt] = useState("");
+	const [pwHelperTxt, setPwHelperTxt] = useState("");
 	const history = useHistory();
 	const count = useSelector(countSelector);
 	const dispatch = useDispatch();
@@ -37,6 +45,7 @@ function Login() {
 	// 	return id + pw;
 	// }, [id, pw]);
 
+	// 회원가입 api
 	const signUp = useCallback(async () => {
 		post({
 			url: "/users/signup",
@@ -47,13 +56,16 @@ function Login() {
 			},
 		})
 			.then((res) => {
-				history.push("/main");
+				if (res.status === 200) {
+					closeModal();
+				}
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	}, [id, pw, nick]);
 
+	// 로그인 api
 	const signIn = useCallback(async () => {
 		post({
 			url: "/users/signin",
@@ -64,46 +76,47 @@ function Login() {
 			},
 		})
 			.then((res) => {
-				history.push("/main");
+				if (res.status === 200) {
+					history.push("/main");
+				}
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	}, [id, pw]);
 
+	// 아이디와 비밀번호 유효성 체크
+	const validator = useCallback(() => {
+		setIdState(!emailRegex.test(id));
+		if (id === "" || idState === true)
+			setIdHelperTxt("유효하지 않은 Email형식입니다.");
+		else setIdHelperTxt("");
+
+		setPwState(!pwRegex.test(pw));
+		if (pw === "" || pwState === true)
+			setPwHelperTxt("8자 이상, 하나 이상의 문자 및 숫자를 조합해주세요.");
+		else setPwHelperTxt("");
+
+		return idState == true && pwState == true;
+	}, [id, pw]);
+
 	const inputChange =
 		(setValue: () => {}) => (event: React.ChangeEvent<HTMLInputElement>) => {
+			setBtnDisabled(validator());
 			setValue(event.target.value);
 		};
-	// const signIn = () => {
-	// 	// sign in...
-	// 	auth
-	// 		.signInWithPopup(provider)
-	// 		.then((result) => {
-	// 			console.log("결과", result);
-	// 			dispatch({
-	// 				type: actionTypes.SET_USER,
-	// 				user: result.user,
-	// 			});
-	// 		})
-	// 		.catch((err) => alert(err.message));
-	// };
 	return (
 		<>
 			<div className="login">
 				<div className="login__logo">
 					<img className="login__main" src="./images/main.png" alt="" />
-					{/* <img src="https://www.logo.wine/a/logo/Facebook/Facebook-Logo.wine.svg" /> */}
 					<h1>Welcome to Summoners warzone</h1>
 					<h1>{count}</h1>
 					<button onClick={() => dispatch(incrementAction(5))}>countup</button>
-					<button onClick={() => dispatch(decrementAction(10))}>
+					<button onClick={() => dispatch(decrementAction(5))}>
 						countdown
 					</button>
 				</div>
-				{/* <Button type="submit" onClick={signIn}>
-					Sign In
-				</Button> */}
 				<div>
 					<h4>
 						계정 정보를 가지고 계신가요?
@@ -120,18 +133,21 @@ function Login() {
 						<TextField
 							label="Id"
 							onChange={inputChange(setId)}
-							value={id}
+							helperText={idHelperTxt}
+							error={id === "" ? false : idState}
 						></TextField>
 						<TextField
 							label="Password"
+							type="password"
 							onChange={inputChange(setPw)}
+							helperText={pwHelperTxt}
+							error={pw === "" ? false : pwState}
 						></TextField>
 						<TextField
 							label="Nickname"
 							onChange={inputChange(setNick)}
-							value={nick}
 						></TextField>
-						<Button type="submit" onClick={signUp}>
+						<Button type="submit" onClick={signUp} disabled={btnDisabled}>
 							Submit
 						</Button>
 					</div>
@@ -141,14 +157,17 @@ function Login() {
 						<TextField
 							label="Id"
 							onChange={inputChange(setId)}
-							value={id}
+							helperText={idHelperTxt}
+							error={id === "" ? false : idState}
 						></TextField>
 						<TextField
 							label="Password"
+							type="password"
+							error={pw === "" ? false : pwState}
+							helperText={pwHelperTxt}
 							onChange={inputChange(setPw)}
-							value={pw}
 						></TextField>
-						<Button type="submit" onClick={signIn}>
+						<Button type="submit" onClick={signIn} disabled={btnDisabled}>
 							Login
 						</Button>
 					</div>
