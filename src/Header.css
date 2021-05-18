@@ -89,7 +89,7 @@
 }
 
 @media (max-width: 768px) {
-	.header__name {
+	.header__option {
 		display: none;
 	}
 }
