@@ -1,16 +1,8 @@
 import React from "react";
 import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
-import HomeIcon from "@material-ui/icons/Home";
-import FlagIcon from "@material-ui/icons/Flag";
-import SubscriptionsOutlinedIcon from "@material-ui/icons/SubscriptionsOutlined";
-import StorefrontOutlinedIcon from "@material-ui/icons/StorefrontOutlined";
-import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
-import { Avatar, IconButton } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
-import ForumIcon from "@material-ui/icons/Forum";
-import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Menu from "./components/Menu";
+
 // import { useStateValue } from "./StateProvider";
 
 function Header() {
@@ -31,19 +23,19 @@ function Header() {
 
 			<div className="header__center">
 				<div className="header__option header__option--active">
-					<HomeIcon fontSize="large" />
+					<h4 className="header__menu">menu1</h4>
 				</div>
-				<div className="header__option">
-					<FlagIcon fontSize="large" />
+				<div className="header__option header__option--active">
+					<h4 className="header__menu">menu2</h4>
 				</div>
-				<div className="header__option">
-					<SubscriptionsOutlinedIcon fontSize="large" />
+				<div className="header__option header__option--active">
+					<h4 className="header__menu">menu3</h4>
 				</div>
-				<div className="header__option">
-					<StorefrontOutlinedIcon fontSize="large" />
+				<div className="header__option header__option--active">
+					<h4 className="header__menu">menu4</h4>
 				</div>
-				<div className="header__option">
-					<SupervisedUserCircleIcon fontSize="large" />
+				<div className="header__option header__option--active">
+					<h4 className="header__menu">menu5</h4>
 				</div>
 			</div>
 
@@ -51,22 +43,9 @@ function Header() {
 				<div className="header__info">
 					{/* <Avatar src={user.photoURL} /> */}
 					{/* <h4>{user.displayName}</h4> */}
-					<Avatar src={""} />
-					<h4>{"Guest"}</h4>
+					{/* <Avatar src={""} /> */}
 				</div>
-
-				<IconButton>
-					<AddIcon />
-				</IconButton>
-				<IconButton>
-					<ForumIcon />
-				</IconButton>
-				<IconButton>
-					<NotificationsActiveIcon />
-				</IconButton>
-				<IconButton>
-					<ExpandMoreIcon />
-				</IconButton>
+				<Menu />
 			</div>
 		</div>
 	);

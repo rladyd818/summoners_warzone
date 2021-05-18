@@ -11,8 +11,8 @@ function Main() {
 
 			<div className="app__body">
 				<Sidebar />
-				<Feed />
-				<Widgets />
+				{/* <Feed /> */}
+				{/* <Widgets /> */}
 			</div>
 		</>
 	);
