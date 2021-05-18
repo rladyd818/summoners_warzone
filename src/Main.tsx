@@ -10,7 +10,7 @@ function Main() {
 			<Header />
 
 			<div className="app__body">
-				<Sidebar />
+				{/* <Sidebar /> */}
 				{/* <Feed /> */}
 				{/* <Widgets /> */}
 			</div>
