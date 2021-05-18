@@ -1,24 +1,26 @@
 import React from "react";
 import "./Header.css";
-import SearchIcon from "@material-ui/icons/Search";
+// import SearchIcon from "@material-ui/icons/Search";
 import Menu from "./components/Menu";
-
-// import { useStateValue } from "./StateProvider";
+import { IconButton } from "@material-ui/core";
+import HomeIcon from "@material-ui/icons/Home";
 
 function Header() {
-	// const [{ user }, dispatch] = useStateValue();
-
 	return (
 		<div className="header">
 			<div className="header__left">
-				<img
+				<IconButton>
+					<HomeIcon style={{ color: "white" }} />
+				</IconButton>
+				<h1 className="header__name">S-Warzone</h1>
+				{/* <img
 					src="https://djf7qc4xvps5h.cloudfront.net/game/cover/resize/3-2331-48.webp?ver=2020.04.02.12.01.13"
 					alt=""
-				/>
-				<div className="header__input">
+				/> */}
+				{/* <div className="header__input">
 					<SearchIcon />
 					<input placeholder="Search" type="text" />
-				</div>
+				</div> */}
 			</div>
 
 			<div className="header__center">
