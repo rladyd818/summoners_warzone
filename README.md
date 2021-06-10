@@ -42,3 +42,5 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+Warzone Exporter [Guide](https://docs.google.com/document/d/1Lv9oSBKR8cbVeMaAa3S2W1RgP2ab1nh7NWFigC0KaxI/edit#)를 클릭하세요.
